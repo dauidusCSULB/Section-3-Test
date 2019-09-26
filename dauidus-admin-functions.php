@@ -11,7 +11,7 @@ Author URI: https://dauid.us
 // allow Sections in custom post types
 function generate_add_section_post_types()
 {
-      return array( 'page','post','product' );
+      return array( 'page','post','product', 'services', 'users' );
 }
 add_filter( 'generate_sections_post_types','generate_add_section_post_types' );
 
@@ -81,7 +81,7 @@ function custom_gf_css() {
 }
 
 /* hide dashboard pages for users other than admin... */
-add_filter( 'parse_query', 'exclude_pages_from_admin' );
+add_filter( 'parse_query', 'exclude_pages_from_admin_users' );
 function exclude_pages_from_admin($query) {
     global $pagenow,$post_type;
     $whodat = get_current_user_id();
@@ -109,7 +109,7 @@ function exclude_from_wp_list_pages($exclude_array) {
 
 // redirect admin dashboard page to custom content dashboard
 add_action('load-index.php', function(){
-    if(get_current_screen()->base == 'dashboard') {
+    if(get_current_screen()->base == 'overview') {
         wp_redirect(admin_url('index.php?page=content_dashboard'));
     }
 });
