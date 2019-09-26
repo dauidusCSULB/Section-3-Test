@@ -16,6 +16,9 @@
     	padding: 0;
     	color: #999;
     	position: relative;
+        width: 110%;
+        top: 20px;
+        background: #00;
 	}
 	
 	#wpadminbar #wp-admin-bar-new_draft > .ab-item::before {
